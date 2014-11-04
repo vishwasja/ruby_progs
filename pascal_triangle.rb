@@ -16,8 +16,8 @@ rows.times do |row|
  	i +=1
  	j = i+1
   end
-  puts "a#{a}"
-  puts "b#{b}"
+#  puts "a#{a}"
+#  puts "b#{b}"
   b << 1
   a=b
   print b

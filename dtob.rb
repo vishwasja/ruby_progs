@@ -7,3 +7,6 @@ until num == 0 do
   i += 1
 end
 puts bin_num  
+
+
+####### num.to_s(2).to_i
