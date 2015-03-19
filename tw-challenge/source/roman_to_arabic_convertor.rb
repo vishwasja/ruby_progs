@@ -4,7 +4,7 @@ class RomanToArabicConverter
                         C: 100, D: 500, M: 1000 }
 
   def initialize roman_val
-    @roman_val = roman_val
+    @roman_val = roman_val if validates?(roman_val)
   end
 
   def convert
@@ -22,6 +22,12 @@ class RomanToArabicConverter
 
   def roman_numerals
     @roman_numerals ||= @roman_val.split('')
+  end
+
+  def validates?(roman_numeral)
+    thousands, hundreds, tens, units = 'M{0,3}', '(CM|CD|D?C{0,3})', '(XC|XL|L?X{0,3})', '(IX|IV|V?I{0,3})'
+    valid_numeral_pattern = /^#{thousands}#{hundreds}#{tens}#{units}$/
+    roman_numeral =~ valid_numeral_pattern ? true : raise(RomanNumeralError, 'Roman numeral is invalid')
   end
 
   def can_subtract_numeral_from_total?
@@ -46,3 +52,5 @@ class RomanToArabicConverter
   end
 
 end
+
+class RomanNumeralError < StandardError; end

@@ -54,19 +54,19 @@ describe PriceCalculator do
         expect(calculator.calculate).to eq 42
       end
 
-      it 'should calculate price with valid dirt and metal'do
+      it 'should calculate price with valid dirt and silver metal'do
         silver = Metal.new('Silver', 17)
         calculator = PriceCalculator.new([@glob, @prok, silver])
         expect(calculator.calculate).to eq 68
       end
 
-      it 'should calculate price with valid dirt and metal'do
+      it 'should calculate price with valid dirt and gold metal'do
         gold = Metal.new('Gold', 14450)
         calculator = PriceCalculator.new([@glob, @prok, gold])
         expect(calculator.calculate).to eq 57800
       end
 
-      it 'should calculate price with valid dirt and metal'do
+      it 'should calculate price with valid dirt and iron metal'do
         iron = Metal.new('Iron', 195.5)
         calculator = PriceCalculator.new([@glob, @prok, iron])
         expect(calculator.calculate).to eq 782

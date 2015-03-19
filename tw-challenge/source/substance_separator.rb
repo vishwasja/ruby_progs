@@ -19,9 +19,11 @@ class SubstanceSeparator
   end
 
   def get_all_dirts
-    dirt = @substances - [(@substances.last.is_a?(Metal)? get_metal_obj : get_metal)]
-    dirt unless get_valid_dirt(dirt).empty?
+    dirts = @substances - [(@substances.last.is_a?(Metal)? get_metal_obj : get_metal)]
+    dirts unless get_valid_dirt(dirts).empty?
   end
+
+  private
 
   def validate_metal(metal)
     Metal::VALID_METALS & [metal.downcase]
@@ -31,7 +33,7 @@ class SubstanceSeparator
     Metal::VALID_METALS & [metal.name.downcase]
   end
 
-  def get_valid_dirt(dirt)
-    Dirt::VALID_DIRTS & dirt.collect{|d| d.name if d.is_a?(Dirt)}
+  def get_valid_dirt(dirts)
+    Dirt::VALID_DIRTS & dirts.collect{|dirt| dirt.name if dirt.is_a?(Dirt)}
   end
 end
